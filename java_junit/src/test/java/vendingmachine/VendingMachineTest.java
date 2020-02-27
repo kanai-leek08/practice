@@ -38,4 +38,16 @@ public class VendingMachineTest {
         String item = machine.purchase();
         assertEquals("water", item);
     }
+
+    @Test
+    void case_succeeded_purchase_with_change() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        String item = machine.purchase();
+        assertEquals("water", item);
+        int change = machine.getChange();
+        assertEquals(50, change);
+    }
 }
