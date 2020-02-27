@@ -50,4 +50,25 @@ public class VendingMachineTest {
         int change = machine.getChange();
         assertEquals(50, change);
     }
+
+    @Test
+    void case_no_purchase_no_change() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        int change = machine.getChange();
+        assertEquals(0, change);
+    }
+
+    @Test
+    void case_no_purchase_with_change_reject() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        machine.insertCoin(1);
+        int change = machine.getChange();
+        assertEquals(1, change);
+    }
 }
