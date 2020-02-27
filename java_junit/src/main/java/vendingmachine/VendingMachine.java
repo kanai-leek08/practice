@@ -3,7 +3,7 @@ package vendingmachine;
 public class VendingMachine {
     private int money=0;
     private int change=0;
-    public void insertCoin(int money) {
+    public void insertMoney(int money) {
         if (isUnacceptableMoney(money)){
             this.change = 1;
             return;
