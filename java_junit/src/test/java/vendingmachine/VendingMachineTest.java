@@ -13,6 +13,7 @@ public class VendingMachineTest {
         String item = machine.purchase();
         assertEquals("water", item);
     }
+
     @Test
     void case_failed_purchase() {
         VendingMachine machine = new VendingMachine();
@@ -27,5 +28,14 @@ public class VendingMachineTest {
         machine.insertCoin(1);
         int change = machine.getChange();
         assertEquals(1, change);
+    }
+
+    @Test
+    void case_succeeded_purchase() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        String item = machine.purchase();
+        assertEquals("water", item);
     }
 }
