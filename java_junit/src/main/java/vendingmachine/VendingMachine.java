@@ -2,8 +2,12 @@ package vendingmachine;
 
 public class VendingMachine {
     private int money=0;
-
+    private int change=0;
     public void insertCoin(int money) {
+        if (money == 1){
+            this.change = 1;
+            return;
+        }
         this.money += money;
     }
 
@@ -12,10 +16,14 @@ public class VendingMachine {
             return "";
         }
         this.money -= 100;
+        this.change = this.money;
         return "water";
     }
 
     public int getChange() {
-        return this.money;
+        if(this.money==150){
+            return this.change;
+        }
+        return this.change;
     }
 }
