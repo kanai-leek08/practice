@@ -71,4 +71,23 @@ public class VendingMachineTest {
         int change = machine.getChange();
         assertEquals(1, change);
     }
+    @Test
+    void case_succeeded_twice_purchase() {
+        // 150円入れて、水を買うと、50円お釣りが出る
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        machine.insertCoin(50);
+        String item = machine.purchase();
+        assertEquals("water", item);
+        int change = machine.getChange();
+        assertEquals(50, change);
+
+        // 50円を入れても、買えない
+        machine.insertCoin(50);
+        item = machine.purchase();
+        assertEquals("", item);
+        change = machine.getChange();
+        assertEquals(0, change);
+    }
 }

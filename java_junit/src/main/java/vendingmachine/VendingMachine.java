@@ -9,6 +9,7 @@ public class VendingMachine {
             return;
         }
         this.money += money;
+        this.change=0;
     }
 
     public String purchase() {
@@ -25,6 +26,7 @@ public class VendingMachine {
     }
 
     public int getChange() {
+        this.money=0;
         return this.change;
     }
 
