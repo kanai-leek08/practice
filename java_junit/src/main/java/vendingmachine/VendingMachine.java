@@ -9,24 +9,27 @@ public class VendingMachine {
             return;
         }
         this.money += money;
-        this.change=0;
     }
 
+    // 商品を買って、お釣りを出す(お釣りは取り出してない)
     public String purchase(Drink drink) {
-        if(isShortageMoney()){
+        if(isShortageMoney(drink)){
             return "";
         }
-        this.change = this.money - drink.getPrice();
+        this.change += this.money - drink.getPrice();
+        this.money=0;
         return drink.getValue();
     }
 
-    private boolean isShortageMoney() {
-        return this.money==50;//仮
+    private boolean isShortageMoney(Drink drink) {
+        return this.money < drink.getPrice();
     }
 
+    // お釣りを取り出す (お釣りを見るだけではない)
     public int getChange() {
-        this.money=0;//仮
-        return this.change;
+        int returnChange = this.change;
+        this.change = 0;
+        return returnChange;
     }
 
     private boolean isUnacceptableMoney(int money) {

@@ -21,6 +21,16 @@ public class VendingMachineTest {
         }
 
         @Test
+        void case_shortage_money_70yen() {
+            VendingMachine machine = new VendingMachine();
+            machine.insertMoney(50);
+            machine.insertMoney(10);
+            machine.insertMoney(10);
+            String item = machine.purchase(Drink.WATER);
+            assertEquals("", item);
+        }
+
+        @Test
         void case_shortage_money_after_succeeded_purchase() {
             // 150円入れて、水を買うと、50円お釣りが出る
             VendingMachine machine = new VendingMachine();
@@ -144,5 +154,37 @@ public class VendingMachineTest {
         assertEquals(0, change);
     }
 
+    @Test
+    void case_no_change_before_purchase_exist_change_after_purchase() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        int change = machine.getChange();
+        assertEquals(0, change);
+        String item = machine.purchase(Drink.COLA);
+        assertEquals("cola", item);
+        change = machine.getChange();
+        assertEquals(30, change);
+        change = machine.getChange();
+        assertEquals(0, change);
+    }
+
+    @Test
+    void test_case() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        String item = machine.purchase(Drink.COLA);
+        assertEquals("cola", item);
+        machine.insertMoney(500);
+        item = machine.purchase(Drink.COLA);
+        assertEquals("cola", item);
+        int change = machine.getChange();
+        assertEquals(410, change);
+        change = machine.getChange();
+        assertEquals(0, change);
+    }
 
 }
