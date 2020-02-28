@@ -171,7 +171,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    void test_case() {
+    void case_change_accumulate() {
         VendingMachine machine = new VendingMachine();
         machine.insertMoney(50);
         machine.insertMoney(50);
