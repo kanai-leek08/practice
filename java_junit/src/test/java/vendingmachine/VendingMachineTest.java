@@ -35,7 +35,7 @@ public class VendingMachineTest {
         VendingMachine machine = new VendingMachine();
         machine.insertMoney(50);
         machine.insertMoney(50);
-        String item = machine.purchase();
+        String item = machine.purchase("water");
         assertEquals("water", item);
     }
 
