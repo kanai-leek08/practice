@@ -1,28 +1,26 @@
 package vendingmachine;
 
 public class VendingMachine {
-    public static final String DRINK_TYPE_WATER = "water";
-    public static final String DRINK_TYPE_COLA = "cola";
     private int money=0;
     private int change=0;
     public void insertMoney(int money) {
         if (isUnacceptableMoney(money)){
-            this.change = money;//仮
+            this.change = money;
             return;
         }
         this.money += money;
         this.change=0;
     }
 
-    public String purchase(String drinkType) {
+    public String purchase(Drink drink) {
         if(isShortageMoney()){
             return "";
         }
-        if(drinkType.equals(DRINK_TYPE_WATER)){
-            this.change = 50;//仮
-            return DRINK_TYPE_WATER;
+        if(drink.equals(Drink.WATER)){
+            this.change = this.money - 100;
+            return Drink.WATER.getValue();
         }
-        return DRINK_TYPE_COLA;//仮
+        return Drink.COLA.getValue();//仮
     }
 
     private boolean isShortageMoney() {
@@ -35,6 +33,6 @@ public class VendingMachine {
     }
 
     private boolean isUnacceptableMoney(int money) {
-        return money == 1 || money == 5 || money == 5000 || money == 10000;//仮
+        return money == 1 || money == 5 || money == 5000 || money == 10000;
     }
 }

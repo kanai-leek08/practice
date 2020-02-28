@@ -16,7 +16,7 @@ public class VendingMachineTest {
         void case_shortage_money() {
             VendingMachine machine = new VendingMachine();
             machine.insertMoney(50);
-            String item = machine.purchase("water");
+            String item = machine.purchase(Drink.WATER);
             assertEquals("", item);
         }
 
@@ -27,14 +27,14 @@ public class VendingMachineTest {
             machine.insertMoney(50);
             machine.insertMoney(50);
             machine.insertMoney(50);
-            String item = machine.purchase("water");
+            String item = machine.purchase(Drink.WATER);
             assertEquals("water", item);
             int change = machine.getChange();
             assertEquals(50, change);
 
             // 50円を入れても、買えない
             machine.insertMoney(50);
-            item = machine.purchase("water");
+            item = machine.purchase(Drink.WATER);
             assertEquals("", item);
             change = machine.getChange();
             assertEquals(0, change);
@@ -72,7 +72,7 @@ public class VendingMachineTest {
         void case_water() {
             VendingMachine machine = new VendingMachine();
             machine.insertMoney(100);
-            String item = machine.purchase("water");
+            String item = machine.purchase(Drink.WATER);
             assertEquals("water", item);
         }
 
@@ -81,7 +81,7 @@ public class VendingMachineTest {
             VendingMachine machine = new VendingMachine();
             machine.insertMoney(50);
             machine.insertMoney(50);
-            String item = machine.purchase("water");
+            String item = machine.purchase(Drink.WATER);
             assertEquals("water", item);
         }
 
@@ -91,10 +91,24 @@ public class VendingMachineTest {
             machine.insertMoney(50);
             machine.insertMoney(50);
             machine.insertMoney(50);
-            String item = machine.purchase("water");
+            String item = machine.purchase(Drink.WATER);
             assertEquals("water", item);
             int change = machine.getChange();
             assertEquals(50, change);
+        }
+
+        @Test
+        void case_water_change_exist_70yen() {
+            VendingMachine machine = new VendingMachine();
+            machine.insertMoney(50);
+            machine.insertMoney(50);
+            machine.insertMoney(50);
+            machine.insertMoney(10);
+            machine.insertMoney(10);
+            String item = machine.purchase(Drink.WATER);
+            assertEquals("water", item);
+            int change = machine.getChange();
+            assertEquals(70, change);
         }
 
         @Test
@@ -103,7 +117,7 @@ public class VendingMachineTest {
             machine.insertMoney(100);
             machine.insertMoney(10);
             machine.insertMoney(10);
-            String item = machine.purchase("cola");
+            String item = machine.purchase(Drink.COLA);
             assertEquals("cola", item);
         }
     }
