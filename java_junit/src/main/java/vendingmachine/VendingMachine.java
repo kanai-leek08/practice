@@ -25,15 +25,6 @@ public class VendingMachine {
         return DRINK_TYPE_COLA;
     }
 
-    public String purchase() {
-        if(isShortageMoney()){
-            return "";
-        }
-        this.money -= 100;
-        this.change = this.money;
-        return DRINK_TYPE_WATER;
-    }
-
     private boolean isShortageMoney() {
         return this.money==50;
     }
