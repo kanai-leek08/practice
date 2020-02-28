@@ -12,6 +12,13 @@ public class VendingMachine {
         this.change=0;
     }
 
+    public String purchase(String drinkType) {
+        if(drinkType.equals("water")){
+            return "water";
+        }
+        return "cola";
+    }
+
     public String purchase() {
         if(isShortageMoney()){
             return "";

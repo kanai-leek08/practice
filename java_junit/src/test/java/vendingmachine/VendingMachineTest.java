@@ -10,7 +10,7 @@ public class VendingMachineTest {
     void Test() {
         VendingMachine machine = new VendingMachine();
         machine.insertMoney(100);
-        String item = machine.purchase();
+        String item = machine.purchase("water");
         assertEquals("water", item);
     }
 
@@ -89,5 +89,15 @@ public class VendingMachineTest {
         assertEquals("", item);
         change = machine.getChange();
         assertEquals(0, change);
+    }
+
+    @Test
+    void Test_purchase_cola() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertMoney(100);
+        machine.insertMoney(10);
+        machine.insertMoney(10);
+        String item = machine.purchase("cola");
+        assertEquals("cola", item);
     }
 }
