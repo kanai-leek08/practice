@@ -120,6 +120,18 @@ public class VendingMachineTest {
             String item = machine.purchase(Drink.COLA);
             assertEquals("cola", item);
         }
+
+        @Test
+        void case_cola_change_exist() {
+            VendingMachine machine = new VendingMachine();
+            machine.insertMoney(50);
+            machine.insertMoney(50);
+            machine.insertMoney(50);
+            String item = machine.purchase(Drink.COLA);
+            assertEquals("cola", item);
+            int change = machine.getChange();
+            assertEquals(30, change);
+        }
     }
 
     @Test

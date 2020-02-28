@@ -16,11 +16,8 @@ public class VendingMachine {
         if(isShortageMoney()){
             return "";
         }
-        if(drink.equals(Drink.WATER)){
-            this.change = this.money - 100;
-            return Drink.WATER.getValue();
-        }
-        return Drink.COLA.getValue();//仮
+        this.change = this.money - drink.getPrice();
+        return drink.getValue();
     }
 
     private boolean isShortageMoney() {
