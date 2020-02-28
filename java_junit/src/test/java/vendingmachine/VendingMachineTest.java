@@ -18,7 +18,7 @@ public class VendingMachineTest {
     void case_failed_purchase() {
         VendingMachine machine = new VendingMachine();
         machine.insertMoney(50);
-        String item = machine.purchase();
+        String item = machine.purchase("water");
         assertEquals("", item);
     }
 

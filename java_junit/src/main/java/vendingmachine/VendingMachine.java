@@ -13,6 +13,9 @@ public class VendingMachine {
     }
 
     public String purchase(String drinkType) {
+        if(isShortageMoney()){
+            return "";
+        }
         if(drinkType.equals("water")){
             return "water";
         }
