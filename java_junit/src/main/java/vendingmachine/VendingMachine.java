@@ -35,6 +35,6 @@ public class VendingMachine {
     }
 
     private boolean isUnacceptableMoney(int money) {
-        return money == 1 || money == 5;//仮
+        return money == 1 || money == 5 || money == 5000 || money == 10000;//仮
     }
 }

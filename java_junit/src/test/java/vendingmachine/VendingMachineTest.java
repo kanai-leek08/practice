@@ -46,7 +46,7 @@ public class VendingMachineTest {
     class CaseReject {
         @Test
         void case_unacceptable_type() {
-            Arrays.asList(1, 5).forEach((money -> {
+            Arrays.asList(1, 5, 5000, 10000).forEach((money -> {
                 VendingMachine machine = new VendingMachine();
                 machine.insertMoney(money);
                 int change = machine.getChange();
