@@ -1,6 +1,8 @@
 package vendingmachine;
 
 public class VendingMachine {
+    public static final String DRINK_TYPE_WATER = "water";
+    public static final String DRINK_TYPE_COLA = "cola";
     private int money=0;
     private int change=0;
     public void insertMoney(int money) {
@@ -16,10 +18,11 @@ public class VendingMachine {
         if(isShortageMoney()){
             return "";
         }
-        if(drinkType.equals("water")){
-            return "water";
+        if(drinkType.equals(DRINK_TYPE_WATER)){
+            this.change = 50;
+            return DRINK_TYPE_WATER;
         }
-        return "cola";
+        return DRINK_TYPE_COLA;
     }
 
     public String purchase() {
@@ -28,7 +31,7 @@ public class VendingMachine {
         }
         this.money -= 100;
         this.change = this.money;
-        return "water";
+        return DRINK_TYPE_WATER;
     }
 
     private boolean isShortageMoney() {
