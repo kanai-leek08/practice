@@ -7,7 +7,7 @@ public class VendingMachine {
     private int change=0;
     public void insertMoney(int money) {
         if (isUnacceptableMoney(money)){
-            this.change = 1;
+            this.change = money;//仮
             return;
         }
         this.money += money;
@@ -19,22 +19,22 @@ public class VendingMachine {
             return "";
         }
         if(drinkType.equals(DRINK_TYPE_WATER)){
-            this.change = 50;
+            this.change = 50;//仮
             return DRINK_TYPE_WATER;
         }
-        return DRINK_TYPE_COLA;
+        return DRINK_TYPE_COLA;//仮
     }
 
     private boolean isShortageMoney() {
-        return this.money==50;
+        return this.money==50;//仮
     }
 
     public int getChange() {
-        this.money=0;
+        this.money=0;//仮
         return this.change;
     }
 
     private boolean isUnacceptableMoney(int money) {
-        return money == 1;
+        return money == 1 || money == 5;//仮
     }
 }

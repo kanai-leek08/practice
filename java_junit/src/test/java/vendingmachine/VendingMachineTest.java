@@ -2,6 +2,8 @@ package vendingmachine;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VendingMachineTest {
@@ -24,10 +26,12 @@ public class VendingMachineTest {
 
     @Test
     void case_reject_coin() {
-        VendingMachine machine = new VendingMachine();
-        machine.insertMoney(1);
-        int change = machine.getChange();
-        assertEquals(1, change);
+        Arrays.asList(1, 5).forEach((money ->{
+            VendingMachine machine = new VendingMachine();
+            machine.insertMoney(money);
+            int change = machine.getChange();
+            assertEquals((int)money, change);
+        }));
     }
 
     @Test
