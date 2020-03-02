@@ -1,4 +1,4 @@
-package vendingmachine;
+package group_b.vendingmachine;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -187,4 +187,13 @@ public class VendingMachineTest {
         assertEquals(0, change);
     }
 
+    @Test
+    void case_empty_stock() {
+        VendingMachine machine = new VendingMachine();
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        machine.insertMoney(50);
+        String item = machine.purchase(Drink.COLA);
+        assertEquals("", item);
+    }
 }

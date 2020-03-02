@@ -1,4 +1,4 @@
-package tennis;
+package group_c.tennis;
 
 import java.util.Arrays;
 import java.util.Collection;

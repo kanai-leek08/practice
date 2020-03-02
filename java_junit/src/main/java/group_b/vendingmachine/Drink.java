@@ -1,4 +1,4 @@
-package vendingmachine;
+package group_b.vendingmachine;
 
 public enum Drink {
     WATER("water", 100), COLA("cola", 120);
