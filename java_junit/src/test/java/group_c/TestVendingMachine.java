@@ -9,8 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestVendingMachine {
 
+    public int TEN = 10;
+    public int HUNDRED = 100;
+    public int THOUSAND = 1000;
+
     @Nested
-    class getTotalMoney{
+    class getTotalBalance {
         @Test
         void getTotalMoney() {
             VendingMachine vendingMachine = new VendingMachine();
@@ -20,7 +24,7 @@ public class TestVendingMachine {
     }
 
     @Nested
-    public class addMoney {
+    public class addBalance {
         @Test
         void addMoney_once() {
             VendingMachine vendingMachine = new VendingMachine();
@@ -52,7 +56,7 @@ public class TestVendingMachine {
     }
 
     @Nested
-    class getReturnMoney{
+    class getReturnBalance {
         @Test
         void getReturnMoney_once(){
             VendingMachine vendingMachine = new VendingMachine();
@@ -85,8 +89,8 @@ public class TestVendingMachine {
         @Test
         void addDrinkPattern() {
             Arrays.asList(
-                    new TestCase("TestCase: water add", "water", "water: 1, coke: 0"),
-                    new TestCase("TestCase: coke add","coke", "water: 0, coke: 1")
+                    new TestCase("TestCase: water add", Drink.WATER, "water: 1, coke: 0"),
+                    new TestCase("TestCase: coke add",Drink.COKE, "water: 0, coke: 1")
             ).forEach(testCase -> {
                 assertEquals(testCase.expected, testCase.please().printDrinkCount(), testCase.message);
             });
@@ -96,7 +100,7 @@ public class TestVendingMachine {
             private final String message;
             private final String expected;
             VendingMachine vendingMachine;
-            public TestCase(String message, String drink, String expected) {
+            public TestCase(String message, Drink drink, String expected) {
                 this.message = message;
                 this.expected = expected;
                 vendingMachine = new VendingMachine();
@@ -109,18 +113,70 @@ public class TestVendingMachine {
         }
     }
 
-    @Test
-    void purchase()
-    {
-        VendingMachine vendingMachine = new VendingMachine();
-        vendingMachine.addDrink("coke");
-        vendingMachine.addMoney(100);
-        vendingMachine.addMoney(10);
-        vendingMachine.addMoney(10);
-        vendingMachine.purchase("coke");
-        assertEquals(0, vendingMachine.getReturnMoney());
-        assertEquals("water: 0, coke: 0", vendingMachine.printDrinkCount());
+    @Nested
+    class purchase{
 
+        @Test
+        void purchaseCoke()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.addDrink(Drink.COKE);
+            vendingMachine.addMoney(HUNDRED);
+            vendingMachine.addMoney(TEN);
+            vendingMachine.addMoney(TEN);
+            vendingMachine.purchase(Drink.COKE);
+            assertEquals(0, vendingMachine.getReturnMoney());
+            assertEquals("water: 0, coke: 0", vendingMachine.printDrinkCount());
+        }
+
+        @Test
+        void purchaseWater()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.addDrink(Drink.WATER);
+            vendingMachine.addMoney(HUNDRED);
+            vendingMachine.purchase(Drink.WATER);
+            assertEquals(0, vendingMachine.getReturnMoney());
+            assertEquals("water: 0, coke: 0", vendingMachine.printDrinkCount());
+        }
+
+        @Test
+        void purchaseReturnCheck()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.addDrink(Drink.WATER);
+            vendingMachine.addDrink(Drink.COKE);
+            vendingMachine.addMoney(THOUSAND);
+            vendingMachine.purchase(Drink.COKE);
+            assertEquals(880, vendingMachine.getReturnMoney());
+            assertEquals("water: 1, coke: 0", vendingMachine.printDrinkCount());
+            assertEquals(0, vendingMachine.getReturnMoney());
+        }
+        @Test
+        void purchase_CantBuyCoke()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.addDrink(Drink.WATER);
+            vendingMachine.addDrink(Drink.COKE);
+            vendingMachine.addMoney(HUNDRED);
+            vendingMachine.purchase(Drink.COKE);
+            assertEquals(100, vendingMachine.getTotalMoney());
+            assertEquals("water: 1, coke: 1", vendingMachine.printDrinkCount());
+        }
+
+        @Test
+        void purchase_CantBuyWater()
+        {
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.addDrink(Drink.WATER);
+            vendingMachine.addDrink(Drink.COKE);
+            vendingMachine.addMoney(TEN);
+            vendingMachine.purchase(Drink.WATER);
+            assertEquals(10, vendingMachine.getTotalMoney());
+            assertEquals("water: 1, coke: 1", vendingMachine.printDrinkCount());
+        }
 
     }
+
+
 }
