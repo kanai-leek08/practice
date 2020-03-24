@@ -17,7 +17,7 @@ public class ArticleControllerTest {
         Map<String, String> params = new HashMap();
         params.put("title", "I love Beer.");
         //when
-        new ArticleController().create(params);
+//        new ArticleController().create(params);
         //then
         Records records = new DataBase().find("select * from articles;");
         assertEquals(1, records.size());
