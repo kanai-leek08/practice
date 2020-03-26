@@ -48,7 +48,7 @@ public class UserTest {
         }
 
         private class IsValidTestPattern {
-            private final String password;
+        private final String password;
             private final String expected;
 
             public IsValidTestPattern(String password, String expected) {
