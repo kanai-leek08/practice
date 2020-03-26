@@ -1,58 +1,56 @@
 package tennis;
 
 public class TennisGame {
-
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    
     private String player1Name;
     private String player2Name;
+    private Player player1;
+    private Player player2;
 
     public TennisGame(String player1Name, String player2Name) {
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
         this.player1Name = player1Name;
         this.player2Name = player2Name;
     }
 
     public void wonPoint(String playerName) {
         if (playerName == "player1")
-            m_score1 += 1;
+            player1.score += 1;
         else
-            m_score2 += 1;
+            player2.score += 1;
     }
 
     public String getScore() {
         String score = "";
         int tempScore = 0;
-        if (m_score1 == m_score2) {
+        if (player1.score == player2.score) {
             score = sameScoreLabel();
-        } else if (m_score1 >= 4 || m_score2 >= 4) {
+        } else if (player1.score >= 4 || player2.score >= 4) {
             score = judgeDuce() + judgeWinner();
         } else {
-            score += scoreToCallLabel(m_score1) + "-" + scoreToCallLabel(m_score2);
+            score = scoreToCallLabel(player1.score) + "-" + scoreToCallLabel(player2.score);
         }
         return score;
     }
 
     private String sameScoreLabel() {
-        switch (m_score1) {
+        switch (player1.score) {
             case 0:
-                return "Love-All";
             case 1:
-                return "Fifteen-All";
             case 2:
-                return "Thirty-All";
+                return scoreToCallLabel(player1.score) + "-All";
             default:
                 return "Deuce";
         }
     }
 
     private String judgeWinner() {
-        if (m_score1 > m_score2) return this.player1Name;
-        else return this.player2Name;
+        return  (player1.score > player2.score) ? this.player1Name : this.player2Name;
     }
 
     private String judgeDuce() {
-        if (Math.abs(m_score1 - m_score2) == 1) return "Advantage ";
-        else return "Win for ";
+        return (Math.abs(player1.score - player2.score) == 1) ? "Advantage " : "Win for ";
     }
 
     private String scoreToCallLabel(int tempScore) {
@@ -67,5 +65,13 @@ public class TennisGame {
                 return "Forty";
         }
         return "";
+    }
+
+    private class Player {
+        public int score = 0;
+
+        public Player(String name) {
+
+        }
     }
 }
