@@ -22,22 +22,15 @@ public class TennisGame {
 
     public String getScore() {
         String score;
-        if (isSameScore()) {
+
+        if (judge.isSameScore()) {
             score = sameScoreLabel();
-        } else if (isDuce()) {
-            score = judgeDuce() + judgeWinner();
+        } else if (judge.isDuce()) {
+            score = duceLabel() + judgeWinner();
         } else {
             score = scoreToCallLabel(player1.score) + "-" + scoreToCallLabel(player2.score);
         }
         return score;
-    }
-
-    private boolean isDuce() {
-        return judge.isDuce();
-    }
-
-    private boolean isSameScore() {
-        return player1.score == player2.score;
     }
 
     private String sameScoreLabel() {
@@ -53,7 +46,7 @@ public class TennisGame {
         return  (player1.score > player2.score) ? player1.name : player2.name;
     }
 
-    private String judgeDuce() {
+    private String duceLabel() {
         return (Math.abs(player1.score - player2.score) == 1) ? "Advantage " : "Win for ";
     }
 
@@ -102,6 +95,10 @@ public class TennisGame {
 
         public boolean isDuce() {
             return player1.score >= 4 || player2.score >= 4;
+        }
+
+        public boolean isSameScore() {
+            return player1.score == player2.score;
         }
     }
 }
