@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,28 +14,28 @@ public class VendingMachineTest {
 
     static Stream<Arguments> buyPatterns() {
         return Stream.of(
-                arguments(Arrays.asList("water"), Arrays.asList(100), "water", "water"),
-                arguments(Arrays.asList("water"), Arrays.asList(100, 10, 10), "water", "water"),
-                arguments(Arrays.asList("richWater"), Arrays.asList(100, 10, 10), "richWater", "richWater"),
-                arguments(Arrays.asList("tea"), Arrays.asList(100, 10, 10), "tea", "tea"),
-                arguments(Arrays.asList("superRichWater"), Arrays.asList(100, 50), "superRichWater", "superRichWater"),
-                arguments(Arrays.asList("tea"), Arrays.asList(100), "tea", null),
-                arguments(Arrays.asList(), Arrays.asList(1000), "tea", null),
-                arguments(Arrays.asList("tea"), Arrays.asList(1000), "water", null)
+                arguments("water: can buy with same price", Arrays.asList("water"), Arrays.asList(100), "water", "water"),
+                arguments("water: can buy with over price", Arrays.asList("water"), Arrays.asList(100, 10, 10), "water", "water"),
+                arguments("rich water: can buy with same price", Arrays.asList("richWater"), Arrays.asList(100, 10, 10), "richWater", "richWater"),
+                arguments("", Arrays.asList("tea"), Arrays.asList(100, 10, 10), "tea", "tea"),
+                arguments("", Arrays.asList("superRichWater"), Arrays.asList(100, 50), "superRichWater", "superRichWater"),
+                arguments("", Arrays.asList("tea"), Arrays.asList(100), "tea", null),
+                arguments("", Arrays.asList(), Arrays.asList(1000), "tea", null),
+                arguments("", Arrays.asList("tea"), Arrays.asList(1000), "water", null)
         );
     }
 
     @ParameterizedTest
     @MethodSource("buyPatterns")
-    public void buy(List<String> stockList, List<Integer> depositList, String order, String expected) {
+    public void buy(String description, List<String> stockList, List<Integer> depositList, String order, String expected) {
         //given
         VendingMachine vendingMachine = new VendingMachine();
         stockList.forEach(vendingMachine::stock);
-        depositList.forEach(vendingMachine::receive);
+        depositList.forEach(money -> { vendingMachine.receive(new Money(money)); });
         //when
         String drink = vendingMachine.provide(order);
         //then
-        assertEquals(expected, drink);
+        assertEquals(expected, drink, description);
     }
 
     static Stream<Arguments> paymentPatterns() {
@@ -57,11 +58,19 @@ public class VendingMachineTest {
     public void received(List<Integer> depositList, int expected) {
         VendingMachine vendingMachine = new VendingMachine();
         //when
-        depositList.forEach(vendingMachine::receive);
+        depositList.forEach(money -> { vendingMachine.receive(new Money(money)); });
         //then
         assertEquals(expected, vendingMachine.totalDeposit);
         assertEquals(expected, vendingMachine.displayTotalDeposit());
     }
+
+    @Test
+    public void sample() {
+        VendingMachine vendingMachine = new VendingMachine();
+        vendingMachine.receive(new Money(100));
+        assertEquals(100, vendingMachine.totalDeposit);
+    }
+
 
     static Stream<Arguments> changePatterns() {
         return Stream.of(
@@ -79,7 +88,7 @@ public class VendingMachineTest {
         //given
         VendingMachine vendingMachine = new VendingMachine();
         stockList.forEach(vendingMachine::stock);
-        depositList.forEach(vendingMachine::receive);
+        depositList.forEach(money -> { vendingMachine.receive(new Money(money)); });
         vendingMachine.provide(order);
         //when
         int actual = vendingMachine.returnChange();
@@ -126,7 +135,7 @@ public class VendingMachineTest {
         //given
         VendingMachine vendingMachine = new VendingMachine();
         drinkList.forEach(vendingMachine::stock);
-        paymentList.forEach(vendingMachine::receive);
+        paymentList.forEach(money -> { vendingMachine.receive(new Money(money)); });
 
         //when
         vendingMachine.provide(order);
