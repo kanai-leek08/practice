@@ -1,25 +1,36 @@
-import java.util.List;
+import java.util.Arrays;
 
 public class VendingMachine {
 
-    public static int receive(List<Integer> moneyList) {
-        return moneyList.stream().mapToInt(money -> money).sum();
+    int totalDeposit = 0;
+
+    public void receive(int money) {
+        if (Arrays.asList(10, 50, 100, 500, 1000).contains(money)) {
+            totalDeposit += money;
+        }
     }
 
-    public String buy(int money, String order) {
-
-        if (money >= getPrice(order)) {
+    public String provide(String order) {
+        if (totalDeposit >= getPrice(order)) {
+            totalDeposit -= getPrice(order);
             return order;
+        } else {
+            return null;
         }
-        return null;
     }
 
     private int getPrice(String order) {
-        if (order.equals("water")) {
-            return 100;
-        } else {
-            return 120;
-        }
+        return order.equals("water") ? 100 : 120;
+
     }
 
+    public int displayTotalDeposit() {
+        return totalDeposit;
+    }
+
+    public int returnChange() {
+        int change = totalDeposit;
+        totalDeposit = 0;
+        return change;
+    }
 }
