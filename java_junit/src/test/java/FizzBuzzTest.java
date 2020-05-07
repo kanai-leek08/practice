@@ -6,7 +6,7 @@ public class FizzBuzzTest {
 
     @Test
     public void test() {
-        assertEquals(1, 1);
+        assertEquals(0, 1);
     }
 }
 
