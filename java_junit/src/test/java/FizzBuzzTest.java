@@ -11,9 +11,8 @@ public class FizzBuzzTest {
 
     class FizzBuzz {
 
-        String execute(){
+        String execute() {
             return "1";
-
         }
 
     }
