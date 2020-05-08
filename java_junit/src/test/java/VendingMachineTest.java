@@ -8,6 +8,7 @@ public class VendingMachineTest {
     }
 
     public void totalCoin(){
+        new VendingMachine();
         assertEquals(1, 1);
     }
 
