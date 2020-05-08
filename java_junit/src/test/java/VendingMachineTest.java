@@ -8,7 +8,11 @@ public class VendingMachineTest {
         assertEquals(1, 1);
     }
 
-    public void testTotalCoin(){
+    public void testInsertOverCoin() {
+        assertEquals(120, 120);
+    }
+
+    public void testTotalCoin() {
         VendingMachine vm = new VendingMachine();
         int actual = vm.totalCoin();
         assertEquals(0, actual);
@@ -16,15 +20,14 @@ public class VendingMachineTest {
 
     class VendingMachine {
 
-        int totalCoin(){
+        int totalCoin() {
             return 0;
         }
 
+        public void insertMoney(int money) {
 
-        public void insertMoney(int money){
-            
         }
 
     }
-    
+
 }
