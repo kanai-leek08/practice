@@ -6,13 +6,13 @@ public class FizzBuzzTest {
     @Test
     public void testInput1got1() {
         String actual = new FizzBuzz().execute();
-        assertEquals(2, 2);
+        assertEquals("1", actual);
     }
 
     class FizzBuzz {
 
         String execute(){
-            return "";
+            return "1";
 
         }
 
