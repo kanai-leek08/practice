@@ -15,7 +15,7 @@ public class VendingMachineTest {
 
     public void testTotalCoin() {
         VendingMachine vm = new VendingMachine();
-        int actual = vm.totalCoin();
+        int actual = vm.totalAmount();
         assertEquals(0, actual);
     }
 
@@ -29,8 +29,8 @@ public class VendingMachineTest {
     class VendingMachine {
         private int money;
 
-        int totalCoin() {
-            return 0;
+        int totalAmount() {
+            return money;
         }
 
         public void insertMoney(int money) {
