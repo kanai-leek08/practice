@@ -43,7 +43,6 @@ public class VendingMachineTest {
 
     }
 
-    class Drink{}
 
  
 
