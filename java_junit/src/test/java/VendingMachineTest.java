@@ -30,4 +30,12 @@ public class VendingMachineTest {
 
     }
 
+    public enum Yen {
+        YEN10,
+        YEN50,
+        YEN100,
+        YEN500,
+        YEN1000
+    }
+
 }
