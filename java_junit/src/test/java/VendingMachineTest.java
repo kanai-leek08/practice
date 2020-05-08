@@ -10,8 +10,8 @@ public class VendingMachineTest {
 
     public void testTotalCoin(){
         VendingMachine vm = new VendingMachine();
-        vm.totalCoin();
-        assertEquals(1, 1);
+        int actual = vm.totalCoin();
+        assertEquals(0, 0);
     }
 
     class VendingMachine {
