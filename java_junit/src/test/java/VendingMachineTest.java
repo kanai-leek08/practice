@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VendingMachineTest {
 
@@ -18,6 +19,13 @@ public class VendingMachineTest {
         assertEquals(0, actual);
     }
 
+    public void testInsertYen() {
+        VendingMachine actual = new VendingMachine();
+        assertTrue(actual.insertMoney(Yen.YEN10));
+
+
+    }
+
     class VendingMachine {
         private int money;
 
@@ -27,6 +35,10 @@ public class VendingMachineTest {
 
         public void insertMoney(int money) {
 
+        }
+
+        public boolean insertMoney(Yen yen) {
+            return true;
         }
 
     }
