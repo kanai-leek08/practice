@@ -1,7 +1,6 @@
 public class VendingMachineTest {
 
-
-    void insert(){
+    void testInsert(){
         assertEquals(1,1);
     }
     
