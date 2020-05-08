@@ -4,6 +4,7 @@ public class VendingMachineTest {
 
     public void testInsert() {
         VendingMachine vm = new VendingMachine();
+        vm.insertMoney(100);
         assertEquals(1, 1);
     }
 
@@ -15,7 +16,9 @@ public class VendingMachineTest {
     class VendingMachine {
 
 
-
+        public void insertMoney(int money){
+            
+        }
 
     }
     
