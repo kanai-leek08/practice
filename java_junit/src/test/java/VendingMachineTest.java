@@ -7,12 +7,15 @@ public class VendingMachineTest {
         assertEquals(1, 1);
     }
 
-    public void totalCoin(){
+    public void testTotalCoin(){
         new VendingMachine();
         assertEquals(1, 1);
     }
 
     class VendingMachine {
+
+
+
 
     }
 
