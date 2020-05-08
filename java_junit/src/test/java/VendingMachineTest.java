@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VendingMachineTest {
 
     public void testInsert() {
-        new VendingMachine();
+        VendingMachine vm = new VendingMachine();
         assertEquals(1, 1);
     }
 
