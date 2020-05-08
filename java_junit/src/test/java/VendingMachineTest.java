@@ -9,8 +9,6 @@ public class VendingMachineTest {
     }
 
     public void testInsertOverCoin() {
-        VendingMachine vm = new VendingMachine();
-        vm.insertMoney(120);
         assertEquals(120, 120);
     }
 
@@ -21,6 +19,7 @@ public class VendingMachineTest {
     }
 
     class VendingMachine {
+        private int money;
 
         int totalCoin() {
             return 0;
