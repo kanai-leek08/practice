@@ -22,8 +22,6 @@ public class VendingMachineTest {
     public void testInsertYen() {
         VendingMachine actual = new VendingMachine();
         assertTrue(actual.insertMoney(Yen.YEN10));
-
-
     }
 
     class VendingMachine {
