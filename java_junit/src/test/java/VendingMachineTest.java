@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VendingMachineTest {
 
-    void testInsert(){
+    public void testInsert(){
         assertEquals(1,1);
     }
     
