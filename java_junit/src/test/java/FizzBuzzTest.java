@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzTest {
     @Test
-    public void testTest() {
+    public void testInput1got1() {
         assertEquals(2, 2);
     }
 }
