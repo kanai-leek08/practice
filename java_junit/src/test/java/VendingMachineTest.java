@@ -1,5 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VendingMachineTest {
 
@@ -22,6 +26,16 @@ public class VendingMachineTest {
     public void testInsertYen() {
         VendingMachine actual = new VendingMachine();
         assertTrue(actual.insertMoney(Yen.YEN10));
+        assertTrue(actual.insertMoney(Yen.YEN50));
+        assertTrue(actual.insertMoney(Yen.YEN100));
+        assertTrue(actual.insertMoney(Yen.YEN500));
+        assertTrue(actual.insertMoney(Yen.YEN1000));
+
+        assertFalse(actual.insertMoney(Yen.YEN1));
+        assertFalse(actual.insertMoney(Yen.YEN5));
+        assertFalse(actual.insertMoney(Yen.YEN5000));
+        assertFalse(actual.insertMoney(Yen.YEN10000));
+
     }
 
     class VendingMachine {
@@ -36,7 +50,18 @@ public class VendingMachineTest {
         }
 
         public boolean insertMoney(Yen yen) {
-            return true;
+
+            List<Yen> success = new ArrayList<>();
+            success.add(Yen.YEN10);
+            success.add(Yen.YEN50);
+            success.add(Yen.YEN100);
+            success.add(Yen.YEN500);
+            success.add(Yen.YEN1000);
+
+            if (success.contains(yen)) {
+                return true;
+            }
+            return false;
         }
 
     }
