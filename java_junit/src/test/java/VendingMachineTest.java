@@ -10,10 +10,15 @@ public class VendingMachineTest {
 
     public void testTotalCoin(){
         VendingMachine vm = new VendingMachine();
+        vm.totalCoin();
         assertEquals(1, 1);
     }
 
     class VendingMachine {
+
+        int totalCoin(){
+            return 0;
+        }
 
 
         public void insertMoney(int money){
