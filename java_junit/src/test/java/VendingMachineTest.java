@@ -18,8 +18,5 @@ public class VendingMachineTest {
 
 
     }
-
-    //お金の投入と払い出し
-
     
 }
