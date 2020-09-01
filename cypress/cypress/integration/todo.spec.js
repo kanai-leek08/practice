@@ -1,6 +1,8 @@
 context('Todo', () => {
   it('should see todo page', () => {
     cy.visit("/")
-    cy.contains("Hello World")
+    cy.get("#input").type("clean room");
+    cy.contains("登録").click()
+    cy.contains("clean room")
   })
 })
