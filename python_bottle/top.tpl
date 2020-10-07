@@ -28,23 +28,23 @@
       <tbody>
         <tr>
           <td>名前</td>
-          <td>金井 大輝</td>
+          <td>{{user['name']}}</td>
         </tr>
         <tr>
           <td>会社</td>
-          <td>Odd-e Japan</td>
+          <td>{{user['company_name']}}</td>
         </tr>
         <tr>
           <td>出身</td>
-          <td>千葉県市川市</td>
+          <td>{{user['birth_place']}}</td>
         </tr>
         <tr>
           <td>在住</td>
-          <td>東京都墨田区</td>
+          <td>{{user['address']}}</td>
         </tr>
         <tr>
           <td>趣味</td>
-          <td>Jazzギター・料理</td>
+          <td>{{user['hobby']}}</td>
         </tr>
       </tbody>
     </table>
