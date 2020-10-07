@@ -22,7 +22,7 @@
   <nav class="navbar bg-light">
     プロフィール
   </nav>
-  <br/>
+  <br />
   <div class="container">
     <table class="table">
       <tbody>
