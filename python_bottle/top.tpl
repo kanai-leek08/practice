@@ -22,6 +22,7 @@
   <nav class="navbar bg-light">
     プロフィール App
   </nav>
+  <br/>
   <div class="container">
     <table class="table">
       <tbody>
@@ -49,4 +50,5 @@
     </table>
   </div>
 </body>
+
 </html>
