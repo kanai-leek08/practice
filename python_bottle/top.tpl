@@ -23,13 +23,30 @@
     プロフィール App
   </nav>
   <div class="container">
-    <div>
-      <p>名前: 金井 大輝</p>
-      <p>会社名: Odd-e Japan</p>
-      <p>出身: 千葉県市川市</p>
-      <p>趣味: Jazzギター, 料理</p>
-    </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>名前</td>
+          <td>金井 大輝</td>
+        </tr>
+        <tr>
+          <td>会社</td>
+          <td>Odd-e Japan</td>
+        </tr>
+        <tr>
+          <td>出身</td>
+          <td>千葉県市川市</td>
+        </tr>
+        <tr>
+          <td>在住</td>
+          <td>東京都墨田区</td>
+        </tr>
+        <tr>
+          <td>趣味</td>
+          <td>Jazzギター・料理</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </body>
-
 </html>
