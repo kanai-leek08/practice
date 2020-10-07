@@ -20,7 +20,7 @@
 
 <body>
   <nav class="navbar bg-light">
-    プロフィール App
+    プロフィール
   </nav>
   <br/>
   <div class="container">
