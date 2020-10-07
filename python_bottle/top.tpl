@@ -19,9 +19,12 @@
 </head>
 
 <body>
-  <div>
-    <h1>金井のプロフィール</h1>
+  <nav class="navbar bg-light">
+    プロフィール App
+  </nav>
+  <div class="container">
     <div>
+      <p>名前: 金井 大輝</p>
       <p>会社名: Odd-e Japan</p>
       <p>出身: 千葉県市川市</p>
       <p>趣味: Jazzギター, 料理</p>
